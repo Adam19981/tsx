@@ -29,7 +29,7 @@
 				</div>
 			</el-form>
 			<div class="search-operation">
-				<el-button type="primary" :icon="Search" @click="search">搜索</el-button>
+				<Button @click="search">按钮</Button>
 				<el-button :icon="Delete" @click="reset">重置</el-button>
 				<el-button type="primary" link class="search-isOpen" @click="searchShow = !searchShow">
 					{{ searchShow ? "合并" : "展开" }}
@@ -129,6 +129,8 @@ import { useAuthButtons } from "@/hooks/useAuthButtons";
 import { useTable } from "@/hooks/useTable";
 import ImportExcel from "@/components/ImportExcel/index.vue";
 import UserDrawer from "@/views/proTable/components/UserDrawer.vue";
+import { Button } from "@kousum/semi-ui-vue";
+
 import {
 	Refresh,
 	CirclePlus,
