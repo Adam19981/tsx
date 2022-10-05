@@ -1,15 +1,12 @@
 import AMapLoader from "@amap/amap-jsapi-loader/index";
-import { mapInterface } from "@/components/map/mapInterface";
+import { MapInterface } from "@/components/map/MapInterface";
 
-export class mapPublic implements mapInterface.map {
-	constructor(key: string) {
-		this.key = key;
-	}
-	public readonly key: string;
+export class mapPublic implements MapInterface.Map {
+	public readonly key: string = "67d8bee1ac1651e1117725a5efe39a47";
 	public mapClass: any;
 	public mapInstance: any;
 
-	public async createMapClass(id: string, options: mapInterface.mapOptions): Promise<void> {
+	public async createMapClass(id: string, options: MapInterface.MapOptions): Promise<void> {
 		this.mapClass = await AMapLoader.load({
 			key: this.key,
 			version: "2.0",
@@ -17,7 +14,7 @@ export class mapPublic implements mapInterface.map {
 		});
 	}
 
-	public async createMapInstance(id: string, options: mapInterface.mapOptions): Promise<void> {
+	public async createMapInstance(id: string, options: MapInterface.MapOptions): Promise<void> {
 		await this.createMapClass(id, options);
 		this.mapInstance = new this.mapClass.Map(id, {
 			mapStyle: `amap://styles/${options.mapStyle}`,
@@ -27,7 +24,7 @@ export class mapPublic implements mapInterface.map {
 		});
 	}
 
-	public createIcon(options: mapInterface.icon) {
+	public createIcon(options: MapInterface.MarkerIcon) {
 		return new this.mapClass.Icon({
 			// 图标尺寸
 			size: new this.mapClass.Size(options.size[0], options.size[1]),
@@ -40,23 +37,29 @@ export class mapPublic implements mapInterface.map {
 		});
 	}
 
-	public setFeatures(features: string | Array<string>): void {
-		//通过setFeatures方法设置显示部分底图元素： bg//point//road//building
-		this.mapInstance.setFeatures(features);
+	public createCommonMarker(options: MapInterface.CommonMarker): any {
+		//创建一个常规点标记
+		return new this.mapClass.Marker(options);
 	}
 
-	public setMapStyle(mapStyle: string): void {
-		//设置map的自定义样式
-		this.mapInstance.setMapStyle(mapStyle);
+	public createTextMarker(options: MapInterface.textMarker): any {
+		//创建文本标记
+		return new this.mapClass.Text(options);
 	}
 
-	public createMarker(options: mapInterface.marker): any {
-		//创建一个点标记
-		return new this.mapClass.Marker({
-			position: options.position,
-			icon: options.icon,
-			title: options.title
-		});
+	public createCircleMarker(options: MapInterface.circleMarker): any {
+		return new this.mapClass.CircleMarker(options);
+	}
+
+	public createMarker(type: string, options: any) {
+		switch (type) {
+			case "text":
+				return this.createTextMarker(options);
+			case "common":
+				return this.createCommonMarker(options);
+			case "circle":
+				return this.createCircleMarker(options);
+		}
 	}
 
 	public addMarker(marker: any | any[]): void {
@@ -80,7 +83,7 @@ export class mapPublic implements mapInterface.map {
 	}
 
 	public setMapCenter(center: [number, number]): void {
-		//设置地图中心点m
+		//设置地图中心点s
 		this.mapInstance.setCenter(center);
 	}
 	public setMapZoom(zoom: number): void {
@@ -91,6 +94,16 @@ export class mapPublic implements mapInterface.map {
 		//设置地图中心点和缩放比例
 		this.mapInstance.setZoomAndCenter(zoom, center);
 	}
+
+	public setFeatures(features: string | Array<string>): void {
+		//通过setFeatures方法设置显示部分底图元素： bg//point//road//building
+		this.mapInstance.setFeatures(features);
+	}
+
+	public setMapStyle(mapStyle: string): void {
+		//设置map的自定义样式
+		this.mapInstance.setMapStyle(mapStyle);
+	}
 }
 
-export const mapManager = new mapPublic("67d8bee1ac1651e1117725a5efe39a47");
+export const mapManager = new mapPublic();
