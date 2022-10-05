@@ -24,7 +24,7 @@ export namespace MapInterface {
 		imageSize: [number, number];
 		imageOffset: [number, number];
 	}
-	export interface textMarker {
+	export interface TextMarker {
 		text: string;
 		style: { [key: string]: string | number };
 		position: [number, number];
@@ -33,7 +33,7 @@ export namespace MapInterface {
 		angle: number;
 		anchor: string;
 	}
-	export interface circleMarker {
+	export interface CircleMarkerOptions {
 		center: [number, number]; //圆心位置
 		radius?: number; //3D视图下，CircleMarker半径不要超过64px
 		strokeColor?: string; //线条颜色，使用16进制颜色代码赋值。默认值为#006600

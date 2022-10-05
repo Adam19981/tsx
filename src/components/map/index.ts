@@ -42,12 +42,12 @@ export class mapPublic implements MapInterface.Map {
 		return new this.mapClass.Marker(options);
 	}
 
-	public createTextMarker(options: MapInterface.textMarker): any {
+	public createTextMarker(options: MapInterface.TextMarker): any {
 		//创建文本标记
 		return new this.mapClass.Text(options);
 	}
 
-	public createCircleMarker(options: MapInterface.circleMarker): any {
+	public createCircleMarker(options: MapInterface.CircleMarkerOptions): any {
 		return new this.mapClass.CircleMarker(options);
 	}
 
