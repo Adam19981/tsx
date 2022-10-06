@@ -8,7 +8,8 @@ const directivesRouter: Array<RouteRecordRaw> = [
 		component: Layout,
 		redirect: "/directives/copyDirect",
 		meta: {
-			title: "自定义指令"
+			title: "自定义指令",
+			showChildren: true
 		},
 		children: [
 			{

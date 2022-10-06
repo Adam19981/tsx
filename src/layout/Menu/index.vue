@@ -34,7 +34,7 @@ import { AuthStore } from "@/store/modules/auth";
 import { handleRouter } from "@/utils/util";
 import { loadingSvg } from "@/utils/svg";
 import Logo from "./components/Logo.vue";
-import SubItem from "./components/SubItem.vue";
+import SubItem from "./components/subItem.tsx";
 import { routerArray } from "@/routers/router";
 
 const route = useRoute();

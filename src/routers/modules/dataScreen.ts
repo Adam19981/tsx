@@ -8,7 +8,8 @@ const dataScreenRouter: Array<RouteRecordRaw> = [
 		meta: {
 			requiresAuth: false,
 			title: "数据大屏",
-			key: "dataScreen"
+			key: "dataScreen",
+			icon: "Edit"
 		},
 		component: () => import("@/views/dataScreen/index.vue")
 	}

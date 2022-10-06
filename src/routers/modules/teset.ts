@@ -8,7 +8,8 @@ const TestRouter: Array<RouteRecordRaw> = [
 		component: Layout,
 		redirect: "/proTable/useHooks",
 		meta: {
-			title: "超级表格111"
+			title: "超级表格",
+			showChildren: true
 		},
 		children: [
 			{
