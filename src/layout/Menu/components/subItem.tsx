@@ -1,12 +1,10 @@
 import { defineComponent } from "vue";
 import { RouteRecordRaw } from "vue-router";
+import { createProp } from "@/utils/propsDefault";
 import * as icon from "@element-plus/icons-vue";
 
 const props = {
-	menuList: {
-		type: Array,
-		default: () => []
-	}
+	menuList: createProp.createArray()
 };
 
 interface prop {
@@ -45,18 +43,15 @@ const subItem = defineComponent<prop>(props => {
 			<el-menu-item
 				index={menu.path}
 				v-slots={{
-					title: () => (
-						<>
-							{menu.meta?.icon ? (
-								<el-icon>
-									<Icon />
-								</el-icon>
-							) : null}
-							<span>{menu.meta?.title ?? ""}</span>
-						</>
-					)
+					title: () => <span>{menu.meta?.title ?? ""}</span>
 				}}
-			></el-menu-item>
+			>
+				{menu.meta?.icon ? (
+					<el-icon>
+						<Icon />
+					</el-icon>
+				) : null}
+			</el-menu-item>
 		);
 	}
 
@@ -64,13 +59,11 @@ const subItem = defineComponent<prop>(props => {
 		return menu.meta?.hidden ? null : menu.meta?.showChildren ? setChildrenMenu(menu) : setNoChildrenMenu(menu);
 	}
 
-	return () => (
-		<div>
-			{props.menuList.map((menu: RouteRecordRaw) => {
-				return setMenu(menu);
-			})}
-		</div>
-	);
+	return () => {
+		return props.menuList.map((menu: RouteRecordRaw) => {
+			return setMenu(menu);
+		});
+	};
 });
 
 subItem.props = props;

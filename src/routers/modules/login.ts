@@ -9,6 +9,7 @@ const loginRouter: Array<RouteRecordRaw> = [
 		meta: {
 			requiresAuth: false,
 			title: "登录页",
+			hidden: true,
 			key: "login"
 		}
 	}

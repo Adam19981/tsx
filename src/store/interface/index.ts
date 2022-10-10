@@ -1,4 +1,6 @@
 /* themeConfigProp */
+import { RouteRecordRaw } from "vue-router";
+
 export interface ThemeConfigProp {
 	primary: string;
 	isDark: boolean;
@@ -21,7 +23,7 @@ export interface GlobalState {
 /* MenuState */
 export interface MenuState {
 	isCollapse: boolean;
-	menuList: Menu.MenuOptions[];
+	menuList: RouteRecordRaw[];
 }
 
 /* TabsState */
