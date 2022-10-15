@@ -9,6 +9,7 @@ const TestRouter: Array<RouteRecordRaw> = [
 		redirect: "/proTable/useHooks",
 		meta: {
 			title: "超级表格",
+			icon: "DocumentCopy",
 			showChildren: true
 		},
 		children: [

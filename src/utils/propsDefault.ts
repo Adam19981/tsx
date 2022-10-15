@@ -5,7 +5,7 @@ export class createProp {
 		return { type: type, default: defaultValue };
 	}
 
-	static createFunction(defaultValue: () => any = () => {}) {
+	static createFunction(defaultValue: (() => any) | any = () => {}) {
 		return this.createAll(Function, defaultValue);
 	}
 

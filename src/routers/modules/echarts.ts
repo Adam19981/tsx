@@ -9,6 +9,7 @@ const echartsRouter: Array<RouteRecordRaw> = [
 		redirect: "/echarts/waterChart",
 		meta: {
 			title: "Echarts",
+			icon: "MagicStick",
 			showChildren: true
 		},
 		children: [

@@ -9,6 +9,7 @@ const homeRouter: Array<RouteRecordRaw> = [
 		redirect: "/home/index",
 		meta: {
 			title: "首页",
+			icon: "House",
 			key: "home"
 		},
 		children: [

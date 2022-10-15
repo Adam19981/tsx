@@ -9,6 +9,7 @@ const directivesRouter: Array<RouteRecordRaw> = [
 		redirect: "/directives/copyDirect",
 		meta: {
 			title: "自定义指令",
+			icon: "Pointer",
 			showChildren: true
 		},
 		children: [

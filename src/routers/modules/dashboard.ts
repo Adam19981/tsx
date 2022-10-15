@@ -8,7 +8,7 @@ const dashboardRouter: Array<RouteRecordRaw> = [
 		component: Layout,
 		redirect: "/dashboard/dataVisualize",
 		meta: {
-			icon: "Edit",
+			icon: "Platform",
 			title: "Dashboard",
 			showChildren: true
 		},

@@ -6,7 +6,7 @@
 		:background="true"
 		layout="total, sizes, prev, pager, next, jumper"
 		:total="pageable.total"
-		@size-change="handleSizeChange"
+		@="handleSizeChange"
 		@current-change="handleCurrentChange"
 	></el-pagination>
 </template>
