@@ -1,4 +1,4 @@
-import { defineComponent, watch, ref, h, onMounted } from "vue";
+import { defineComponent, ref, h, onMounted } from "vue";
 import { ColumnProps, ProTableProps } from "@/components/ProTable/interface";
 import { ElTable, ElTableColumn, ElPagination, ElButton } from "element-plus";
 import { Operation } from "@element-plus/icons-vue";
@@ -17,8 +17,6 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 	const selectedListIds = ref<any[]>();
 	const tableHeight = ref<number>();
 	const maxLength = ref<number>(0);
-
-	// 表格多选 Hooks
 
 	// 表格操作 Hooks
 	const { tableData, searchParam, pageable, getTableList, search, reset, handleCurrentChange, handleSizeChange } = useTable(
@@ -43,16 +41,10 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 	onMounted(async () => {
 		await getTableList();
 		setTableHeight();
-		window.addEventListener("resize", setTableHeight);
+		window.addEventListener("resize", () => {
+			setTableHeight();
+		});
 	});
-
-	watch(
-		() => searchParam.value,
-		() => {
-			getTableList();
-		},
-		{ deep: true }
-	);
 
 	function openColSetting() {
 		colRef.value.openColSetting();
@@ -70,13 +62,17 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 		return num * 400;
 	}
 
-	function setTableHeight() {
+	function setTableHeight(changeFormHeight: boolean = false) {
 		tableHeight.value = window.innerHeight - 155;
 		props.toolButton && (tableHeight.value -= 52);
 		props.showPagination && (tableHeight.value -= 46);
 		if (props.showSearch) {
-			tableHeight.value -= searchFormRef.value.$el.offsetHeight + 10;
-			maxLength.value = Math.trunc((searchFormRef.value.$el.offsetWidth - 200 - getSearchDateNum()) / 210);
+			maxLength.value = Math.trunc((searchFormRef.value.$el.offsetWidth - 230 - getSearchDateNum()) / 210);
+			if (changeFormHeight) {
+				tableHeight.value -= searchFormRef.value.$el.offsetHeight + 10;
+			} else {
+				tableHeight.value -= 60;
+			}
 		}
 	}
 
@@ -149,7 +145,7 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 	}
 
 	expose({
-		getTableList,
+		search,
 		searchParam,
 		selectedListIds
 	});

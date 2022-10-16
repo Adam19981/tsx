@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Menu from "./Menu/index.tsx";
+import Menu from "./Menu/index";
 import Header from "./Header/index.vue";
 import Tabs from "./Tabs/index.vue";
 import cacheRouter from "@/routers/cacheRouter";

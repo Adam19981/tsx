@@ -95,21 +95,17 @@ const renderHeader = (scope: any) => {
 };
 
 // 表格配置项
-const columns: Partial<ColumnProps>[] = [
-	{ type: "selection", width: 80, fixed: "left" },
-	{ type: "index", label: "#", width: 80 },
-	{ prop: "username", label: "用户姓名", width: 130, search: true, searchProps: { disabled: true }, renderHeader },
-	// 😄 enum 可以直接是数组对象，也可以是请求方法(proTable 内部会执行获取 enum 的这个方法)，下面用户状态也同理
-	// 😄 enum 为请求方法时，后台返回的数组对象 key 值不是 label 和 value 的情况，可以在 searchProps 中指定 label 和 value 的 key 值
+const columns: ColumnProps[] = [
+	{ type: "selection", prop: "selection", width: 80, fixed: "left" },
+	{ type: "index", prop: "index", label: "#", width: 80 },
+	{ prop: "username", label: "用户姓名", width: 130, search: true, renderHeader },
 	{
 		prop: "gender",
-		label: "性别",
+		label: "创建时间",
 		width: 120,
 		sortable: true,
 		search: true,
-		searchType: "select",
-		enum: [],
-		searchProps: { label: "genderLabel", value: "genderValue" }
+		searchType: "date"
 	},
 	{ prop: "idCard", label: "身份证号", search: true },
 	{ prop: "email", label: "邮箱", search: true },
@@ -120,19 +116,14 @@ const columns: Partial<ColumnProps>[] = [
 		sortable: true,
 		search: true,
 		searchType: "select",
-		enum: [],
-		searchProps: { label: "userLabel", value: "userStatus" }
+		enum: []
 	},
 	{
 		prop: "createTime",
 		label: "创建时间",
 		width: 200,
 		sortable: true,
-		search: true,
-		searchProps: {
-			disabledDate: (time: Date) => time.getTime() < Date.now() - 8.64e7
-		},
-		searchInitParam: ["2022-08-30 00:00:00", "2022-08-20 23:59:59"]
+		search: true
 	},
 	{ prop: "operation", label: "操作", width: 330, fixed: "right", renderHeader }
 ];
