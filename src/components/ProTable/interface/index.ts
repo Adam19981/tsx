@@ -24,18 +24,21 @@ export interface ColumnProps {
 	isShow?: boolean; // 是否显示在表格当中
 	sortable?: boolean; // 是否可排序（静态排序）
 	fixed?: FixedProp; // 固定列
-	search?: boolean; // 是否为搜索项
-	searchType?: SearchType; // 搜索项类型
-	dateTye?: DateType; //时间搜索类型
-	dateKey?: string | string[];
-	switchValue?: {
-		active: any;
-		inactive: any;
-	};
-	enum?: EnumProps[];
-	keyConfig?: {
-		label: string;
-		value: string | number | { [key: string]: any };
+	searchOption?: {
+		search?: boolean; // 是否为搜索项
+		searchType?: SearchType; // 搜索项类型
+		dateTye?: DateType; //时间搜索类型
+		dateKey?: string | string[];
+		format?: string;
+		switchValue?: {
+			active: any;
+			inactive: any;
+		};
+		enum?: EnumProps[];
+		keyConfig?: {
+			label: string;
+			value: string | number;
+		};
 	};
 	renderHeader?: (params: any) => any; // 自定义表头
 	render?: (h: any, params: any) => any;

@@ -35,17 +35,25 @@ export function userSearchForm(searchParam: any, search: () => void) {
 	}
 
 	function setSelect(column: ColumnProps) {
+		const newLabel: string | undefined = column.searchOption?.keyConfig?.label;
+		const newValue: string | number | undefined = column.searchOption?.keyConfig?.value;
 		return (
 			<ElSelect
 				v-model={searchParam[column.prop]}
 				placeholder={"请选择" + column.label}
-				multiple={column.searchType === "multipleSelect"}
+				multiple={column.searchOption?.searchType === "multipleSelect"}
 				clearable
 				filterable
 				onChange={search}
 			>
-				{column.enum?.map((item: any) => {
-					return <ElOption label={item.label} value={item.value} disabled={item.disabled}></ElOption>;
+				{column.searchOption?.enum?.map((item: any) => {
+					return (
+						<ElOption
+							label={newLabel ? item[newLabel] : item.label}
+							value={newValue ? item[newValue] : item.value}
+							disabled={item.disabled}
+						></ElOption>
+					);
 				})}
 			</ElSelect>
 		);
@@ -54,7 +62,7 @@ export function userSearchForm(searchParam: any, search: () => void) {
 	function setRadio(column: ColumnProps) {
 		return (
 			<ElRadioGroup v-model={searchParam[column.prop]} onChange={search}>
-				{column.enum?.map((item: any) => {
+				{column.searchOption?.enum?.map((item: any) => {
 					return (
 						<ElRadioButton label={item.value} disabled={item.disabled}>
 							{item.label}
@@ -68,8 +76,8 @@ export function userSearchForm(searchParam: any, search: () => void) {
 		return (
 			<ElSwitch
 				v-model={searchParam[column.prop]}
-				activeValue={column.switchValue?.active}
-				inactiveValue={column.switchValue?.inactive}
+				activeValue={column.searchOption?.switchValue?.active}
+				inactiveValue={column.searchOption?.switchValue?.inactive}
 				onChange={search}
 			></ElSwitch>
 		);
@@ -80,9 +88,10 @@ export function userSearchForm(searchParam: any, search: () => void) {
 			<el-date-picker
 				v-model={date.value}
 				valueFormat="x"
-				type={column.dateTye}
+				format={column.searchOption?.format}
+				type={column.searchOption?.dateTye}
 				onChange={(event: any) => {
-					dateChange(event, column.dateKey!);
+					dateChange(event, column.searchOption?.dateKey as any);
 				}}
 				clearable
 				editable={false}

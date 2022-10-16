@@ -30,7 +30,7 @@ const searchForm = defineComponent<searchFormProps>((props, ctx) => {
 
 	function filterColumns(columns: ColumnProps[]) {
 		return columns.filter((column: ColumnProps) => {
-			return column.search;
+			return column.searchOption?.search;
 		});
 	}
 
@@ -47,7 +47,7 @@ const searchForm = defineComponent<searchFormProps>((props, ctx) => {
 	}
 
 	function setFormItem(column: ColumnProps) {
-		switch (column.searchType) {
+		switch (column.searchOption?.searchType) {
 			case "input":
 			case undefined:
 				return setInput(column);

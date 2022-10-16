@@ -57,9 +57,9 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 	function getSearchDateNum(): number {
 		let num: number = 0;
 		props.columns.forEach((column: ColumnProps) => {
-			column.searchType === "dateRange" && (num += 1);
+			column.searchOption?.searchType === "dateRange" && (num += 1);
 		});
-		return num * 400;
+		return num;
 	}
 
 	function setTableHeight(changeFormHeight: boolean = false) {
@@ -67,7 +67,8 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 		props.toolButton && (tableHeight.value -= 52);
 		props.showPagination && (tableHeight.value -= 46);
 		if (props.showSearch) {
-			maxLength.value = Math.trunc((searchFormRef.value.$el.offsetWidth - 230 - getSearchDateNum()) / 210);
+			maxLength.value =
+				Math.trunc((searchFormRef.value.$el.offsetWidth - 230 - getSearchDateNum() * 400) / 210) + getSearchDateNum();
 			if (changeFormHeight) {
 				tableHeight.value -= searchFormRef.value.$el.offsetHeight + 10;
 			} else {
