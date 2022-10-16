@@ -20,7 +20,7 @@ const TestRouter: Array<RouteRecordRaw> = [
 				meta: {
 					keepAlive: true,
 					requiresAuth: true,
-					title: "使用 Component",
+					title: "好用的Table",
 					key: "useComponent"
 				}
 			}

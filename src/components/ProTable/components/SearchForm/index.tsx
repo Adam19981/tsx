@@ -1,5 +1,5 @@
 import { computed, defineComponent, nextTick, ref } from "vue";
-import { ColumnProps, searchFormProps } from "@/components/ProTable/interface";
+import { ColumnProps, searchFormProps, SearchType } from "@/components/ProTable/interface";
 import { createProp } from "@/utils/propsDefault";
 import { ElForm, ElFormItem, ElButton } from "element-plus";
 import { Delete, Search } from "@element-plus/icons-vue";
@@ -20,7 +20,7 @@ const searchForm = defineComponent<searchFormProps>((props, ctx) => {
 	// 是否展开搜索项
 	const searchShow = ref(false);
 
-	const { date, setInput, setSelect, setRadio, setSwitch, setDatePicker } = userSearchForm(props.searchParam, props.search);
+	const { setInput, setSelect, setRadio, setSwitch, setDatePicker } = userSearchForm(props.searchParam, props.search);
 
 	// 根据是否展开配置搜索项长度
 	const getSearchList = computed((): ColumnProps[] => {
@@ -42,7 +42,11 @@ const searchForm = defineComponent<searchFormProps>((props, ctx) => {
 
 	function handleReset() {
 		formRef.value.resetFields();
-		date.value = null;
+		getSearchList.value.forEach((item: ColumnProps) => {
+			const type: SearchType | undefined = item.searchOption!.searchType;
+			(type === "date" || type === "dateRange") &&
+				(item.searchOption!.dateOption!.dateValue = item.searchOption!.dateOption!.dateDefaultValue);
+		});
 		props.reset();
 	}
 

@@ -17,6 +17,7 @@ export function useTable(
 	const state = reactive<Table.TableStateProps>({
 		// 表格数据
 		tableData: [],
+		watchReset: false,
 		// 分页数据
 		pageable: {
 			// 当前页数
@@ -85,6 +86,7 @@ export function useTable(
 	function reset() {
 		state.pageable.pageNum = 1;
 		state.searchParam = { ...initParam };
+		state.watchReset = !state.watchReset;
 		getTableList();
 	}
 

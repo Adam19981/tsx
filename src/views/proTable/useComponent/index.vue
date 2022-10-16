@@ -47,7 +47,6 @@
 
 <script setup lang="tsx" name="useComponent">
 import { ref, reactive } from "vue";
-import { ElMessage } from "element-plus";
 import { User } from "@/api/interface";
 import { ColumnProps } from "@/components/ProTable/interface";
 import { useHandleData } from "@/hooks/useHandleData";
@@ -73,59 +72,49 @@ const proTable = ref();
 
 // 如果表格需要初始化请求参数，直接定义传给 ProTable(之后每次请求都会自动带上该参数，此参数更改之后也会一直带上，改变此参数会自动刷新表格数据)
 const initParam = reactive({
-	type: 1,
-	status: 1
+	type: 1
 });
 
 // 页面按钮权限
 const { BUTTONS } = useAuthButtons();
 
-// 自定义渲染头部(使用tsx语法)
-const renderHeader = (scope: any) => {
-	return (
-		<el-button
-			type="primary"
-			onClick={() => {
-				ElMessage.success("我是自定义表头");
-			}}
-		>
-			{scope.row.label}
-		</el-button>
-	);
-};
-
 // 表格配置项
 const columns: ColumnProps[] = [
 	{ type: "selection", prop: "selection", width: 80, fixed: "left" },
 	{ type: "index", prop: "index", label: "#", width: 80 },
-	{ prop: "username", label: "用户姓名", width: 130, search: true, renderHeader },
+	{ prop: "username", label: "用户姓名", width: 130, searchOption: { search: true } },
 	{
 		prop: "gender",
 		label: "创建时间",
 		width: 120,
 		sortable: true,
-		search: true,
-		searchType: "date"
+		searchOption: {
+			search: true,
+			searchType: "date",
+			dateOption: {
+				dateValue: new Date().getTime(),
+				dateDefaultValue: new Date().getTime(),
+				dateKey: "startAt"
+			}
+		}
 	},
-	{ prop: "idCard", label: "身份证号", search: true },
-	{ prop: "email", label: "邮箱", search: true },
-	{ prop: "address", label: "居住地址", search: true },
+	{ prop: "idCard", label: "身份证号", searchOption: { search: true } },
+	{ prop: "email", label: "邮箱", searchOption: { search: true } },
+	{ prop: "address", label: "居住地址", searchOption: { search: true } },
 	{
 		prop: "status",
 		label: "用户状态",
 		sortable: true,
-		search: true,
-		searchType: "select",
-		enum: []
+		searchOption: { search: true, searchType: "select", enum: [] }
 	},
 	{
 		prop: "createTime",
 		label: "创建时间",
 		width: 200,
 		sortable: true,
-		search: true
+		searchOption: { search: true }
 	},
-	{ prop: "operation", label: "操作", width: 330, fixed: "right", renderHeader }
+	{ prop: "operation", label: "操作", width: 330, fixed: "right" }
 ];
 
 // 删除用户信息

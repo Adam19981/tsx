@@ -27,9 +27,13 @@ export interface ColumnProps {
 	searchOption?: {
 		search?: boolean; // 是否为搜索项
 		searchType?: SearchType; // 搜索项类型
-		dateTye?: DateType; //时间搜索类型
-		dateKey?: string | string[];
-		format?: string;
+		dateOption?: {
+			dateTye?: DateType; //时间搜索类型
+			dateKey: string | string[];
+			dateValue: number | number[] | null;
+			dateDefaultValue: number | number[] | null;
+			format?: string;
+		};
 		switchValue?: {
 			active: any;
 			inactive: any;

@@ -42,7 +42,7 @@ const colSetting = defineComponent<ColSettingProps>((props, ctx) => {
 						prop="name"
 						label="显示"
 						v-slots={{
-							default: (scope: any) => <ElSwitch v-model:value={scope.row.isShow}></ElSwitch>
+							default: (scope: any) => <ElSwitch v-model={scope.row.isShow}></ElSwitch>
 						}}
 					></ElTableColumn>
 				</ElTable>

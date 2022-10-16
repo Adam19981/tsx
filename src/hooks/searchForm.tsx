@@ -1,9 +1,7 @@
 import { ColumnProps } from "@/components/ProTable/interface";
 import { ElInput, ElOption, ElRadioButton, ElRadioGroup, ElSelect, ElSwitch } from "element-plus/es";
-import { ref } from "vue";
 
 export function userSearchForm(searchParam: any, search: () => void) {
-	const date = ref<number | number[] | null>();
 	function dateChange(event: number | number[], key: string | string[]) {
 		if (event) {
 			if (Array.isArray(event)) {
@@ -86,12 +84,12 @@ export function userSearchForm(searchParam: any, search: () => void) {
 	function setDatePicker(column: ColumnProps) {
 		return (
 			<el-date-picker
-				v-model={date.value}
+				v-model={column.searchOption!.dateOption!.dateValue}
 				valueFormat="x"
-				format={column.searchOption?.format}
-				type={column.searchOption?.dateTye}
+				format={column.searchOption?.dateOption?.format}
+				type={column.searchOption?.dateOption?.dateTye}
 				onChange={(event: any) => {
-					dateChange(event, column.searchOption?.dateKey as any);
+					dateChange(event, column.searchOption!.dateOption!.dateKey);
 				}}
 				clearable
 				editable={false}
@@ -107,7 +105,6 @@ export function userSearchForm(searchParam: any, search: () => void) {
 		setSelect,
 		setRadio,
 		setSwitch,
-		setDatePicker,
-		date
+		setDatePicker
 	};
 }
