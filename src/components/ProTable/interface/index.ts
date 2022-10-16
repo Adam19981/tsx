@@ -31,6 +31,7 @@ export interface ColumnProps {
 			dateTye?: DateType; //时间搜索类型
 			dateKey: string | string[];
 			dateValue: number | number[] | null;
+			change: (event: any, key: string | string[]) => void;
 			dateDefaultValue: number | number[] | null;
 			format?: string;
 		};

@@ -86,10 +86,12 @@ export function userSearchForm(searchParam: any, search: () => void) {
 			<el-date-picker
 				v-model={column.searchOption!.dateOption!.dateValue}
 				valueFormat="x"
-				format={column.searchOption?.dateOption?.format}
-				type={column.searchOption?.dateOption?.dateTye}
+				format={column.searchOption?.dateOption!.format}
+				type={column.searchOption?.dateOption!.dateTye}
 				onChange={(event: any) => {
-					dateChange(event, column.searchOption!.dateOption!.dateKey);
+					column.searchOption?.dateOption!.change
+						? column.searchOption.dateOption.change(event, column.searchOption!.dateOption!.dateKey)
+						: dateChange(event, column.searchOption!.dateOption!.dateKey);
 				}}
 				clearable
 				editable={false}
