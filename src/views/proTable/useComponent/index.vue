@@ -72,7 +72,9 @@ const proTable = ref();
 
 // 如果表格需要初始化请求参数，直接定义传给 ProTable(之后每次请求都会自动带上该参数，此参数更改之后也会一直带上，改变此参数会自动刷新表格数据)
 const initParam = reactive({
-	type: 1
+	type: 1,
+	startAt: Math.round(new Date().getTime() / 1000),
+	username: ""
 });
 
 // 页面按钮权限

@@ -8,6 +8,7 @@ export function userSearchForm(searchParam: any, search: () => void) {
 				searchParam[key[0]] = Math.round(event[0] / 1000);
 				searchParam[key[1]] = Math.round(event[1] / 1000);
 			} else {
+				console.log(event);
 				searchParam[key as string] = Math.round(event / 1000);
 			}
 		} else {

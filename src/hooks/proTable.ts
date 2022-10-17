@@ -1,5 +1,5 @@
 import { Table } from "./interface";
-import { reactive, computed, toRefs } from "vue";
+import { reactive, computed, toRefs, watch } from "vue";
 
 /**
  * @description table 页面操作方法封装
@@ -34,6 +34,13 @@ export function useTable(
 		totalParam: {}
 	});
 
+	watch(
+		() => initParam,
+		value => {
+			console.log(value);
+		}
+	);
+
 	/**
 	 * @description 分页查询参数(只包括分页和表格字段排序,其他排序方式可自行配置)
 	 * */
@@ -57,13 +64,12 @@ export function useTable(
 		try {
 			// 先把初始化参数和分页参数放到总参数里面
 			Object.assign(state.totalParam, state.searchParam, isPageable ? pageParam.value : {});
+			console.log(state.totalParam);
 			let { data } = await api(state.totalParam);
 			console.log(data);
 			let { datalist, total } = data;
-			console.log(dataCallBack);
 			dataCallBack && (datalist = dataCallBack(datalist));
 			state.tableData = datalist;
-			console.log(state.tableData);
 			state.pageable.total = total;
 		} catch (error) {
 			console.log(error);
