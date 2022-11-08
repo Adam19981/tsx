@@ -1,13 +1,13 @@
-import { createProp } from "@/utils/propsDefault";
+import { createProp } from "@sworks/utils";
 
 export default {
 	columns: createProp.createArray(),
 	showPagination: createProp.createBoolean(true),
-	initParam: createProp.createObject({}),
+	initParam: createProp.createObject(),
 	border: createProp.createBoolean(true),
 	stripe: createProp.createBoolean(),
-	requestApi: createProp.createFunction(null),
-	dataCallback: createProp.createFunction(null),
+	requestApi: createProp.createFunction(),
+	dataCallback: createProp.createFunction(),
 	toolButton: createProp.createBoolean(true),
 	showSearch: createProp.createBoolean(true),
 	childrenName: createProp.createString("children"),

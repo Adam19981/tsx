@@ -4,10 +4,10 @@ import { ElTable, ElTableColumn, ElPagination, ElButton } from "element-plus";
 import { Operation } from "@element-plus/icons-vue";
 import props from "./props";
 import { useTable } from "@/hooks/proTable";
-import { getLocalDate } from "@/utils/date";
 import ColSetting from "@/components/ProTable/components/ColSetting/index";
 import SearchForm from "@/components/ProTable/components/SearchForm/index";
 import tableBg from "@/assets/images/notData.png";
+import { SDate } from "@sworks/utils";
 
 const proTable = defineComponent<ProTableProps>((props, ctx) => {
 	const { expose, slots } = ctx;
@@ -125,7 +125,7 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 		if (column.render) {
 			return column.render(h, scope);
 		} else if (column.dateFormat) {
-			return <span>{getLocalDate(column.dateFormat, scope.row[column.prop])}</span>;
+			return <span>{SDate.getLocalDate(column.dateFormat, scope.row[column.prop])}</span>;
 		} else {
 			return <span>{scope.row[column.prop] ? scope.row[column.prop] : "—"}</span>;
 		}

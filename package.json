@@ -23,6 +23,7 @@
 		"@amap/amap-jsapi-loader": "^1.0.1",
 		"@element-plus/icons-vue": "^1.1.4",
 		"@kousum/semi-ui-vue": "^0.0.4",
+		"@sworks/utils": "^1.0.7",
 		"@vueuse/core": "^8.0.1",
 		"@wangeditor/editor": "^5.1.12",
 		"@wangeditor/editor-for-vue": "^5.1.12",

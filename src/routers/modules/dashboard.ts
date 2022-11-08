@@ -6,10 +6,11 @@ const dashboardRouter: Array<RouteRecordRaw> = [
 	{
 		path: "/dashboard",
 		component: Layout,
+		name: "home",
 		redirect: "/dashboard/dataVisualize",
 		meta: {
 			icon: "Platform",
-			title: "Dashboard",
+			title: "首页",
 			showChildren: true
 		},
 		children: [

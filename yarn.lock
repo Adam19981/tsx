@@ -802,6 +802,11 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@sworks/utils@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@sworks/utils/-/utils-1.0.7.tgz#aa302c84b58335b5af578cb33755bd51e979fde9"
+  integrity sha512-EA36U6li2eD+s2ffUh5o9k859tYK09QR0ZWJYgn6OCVKGp04IaluDMGAKp6VXCdIae+w4kwJu4mYPhjggAA4Gw==
+
 "@transloadit/prettier-bytes@0.0.7":
   version "0.0.7"
   resolved "https://registry.npmmirror.com/@transloadit/prettier-bytes/-/prettier-bytes-0.0.7.tgz#cdb5399f445fdd606ed833872fa0cabdbc51686b"
