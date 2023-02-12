@@ -1,0 +1,1 @@
+import{v as n}from"./index-6ff7cf03.js";const o=(e,s)=>{s&&typeof s=="object"&&e.setOption(s);const t=()=>{e&&e.resize()};window.addEventListener("resize",t,!1),n(()=>{window.removeEventListener("resize",t)})};export{o as u};

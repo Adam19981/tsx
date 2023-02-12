@@ -8,20 +8,11 @@ const TestRouter: Array<RouteRecordRaw> = [
 		component: Layout,
 		redirect: "/proTable/useHooks",
 		meta: {
-			title: "超级表格111"
+			title: "超级表格",
+			icon: "DocumentCopy",
+			showChildren: true
 		},
 		children: [
-			{
-				path: "/proTable1/useHooks",
-				name: "useHooks",
-				component: () => import("@/views/proTable/useHooks/index.vue"),
-				meta: {
-					keepAlive: true,
-					requiresAuth: true,
-					title: "使用 Hooks",
-					key: "useHooks"
-				}
-			},
 			{
 				path: "/proTable1/useComponent",
 				name: "useComponent",
@@ -29,7 +20,7 @@ const TestRouter: Array<RouteRecordRaw> = [
 				meta: {
 					keepAlive: true,
 					requiresAuth: true,
-					title: "使用 Component",
+					title: "好用的Table",
 					key: "useComponent"
 				}
 			}

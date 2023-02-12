@@ -11,6 +11,7 @@ const axiosCanceler = new AxiosCanceler();
  * @description 路由拦截 beforeEach（路由配置无数种方法，个人觉得最简便）
  * */
 router.beforeEach((to, from, next) => {
+	console.log(to);
 	NProgress.start();
 	// * 在跳转路由之前，清除所有的请求
 	axiosCanceler.removeAllPending();

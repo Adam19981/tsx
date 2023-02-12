@@ -17,16 +17,13 @@
 	// 表格 search 样式
 	.table-search {
 		display: flex;
+		justify-content: space-between;
 		margin-bottom: 10px;
 		.el-form {
-			max-width: 1260px;
+			width: calc(100% - 200px);
 			.el-form-item {
-				margin-right: 5px;
-				.el-input,
-				.el-select,
-				.el-date-editor--timerange {
-					width: 210px;
-				}
+				width: 200px;
+				margin-right: 10px;
 				.el-date-editor--datetimerange,
 				.el-date-editor--daterange {
 					width: 400px;
@@ -122,13 +119,6 @@
 		// .el-scrollbar__wrap {
 		// 	height: 100% !important;
 		// }
-	}
-
-	// 表格 pagination 样式
-	.el-pagination {
-		display: flex;
-		justify-content: flex-end;
-		margin: 23px 0 10px;
 	}
 }
 

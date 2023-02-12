@@ -6,9 +6,12 @@ const dashboardRouter: Array<RouteRecordRaw> = [
 	{
 		path: "/dashboard",
 		component: Layout,
+		name: "home",
 		redirect: "/dashboard/dataVisualize",
 		meta: {
-			title: "Dashboard"
+			icon: "Platform",
+			title: "首页",
+			showChildren: true
 		},
 		children: [
 			{
@@ -17,7 +20,7 @@ const dashboardRouter: Array<RouteRecordRaw> = [
 				component: () => import("@/views/dashboard/dataVisualize/index.vue"),
 				meta: {
 					keepAlive: true,
-					requiresAuth: true,
+					requiresAuth: false,
 					title: "数据可视化",
 					key: "dataVisualize"
 				}

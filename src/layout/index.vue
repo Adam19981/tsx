@@ -19,19 +19,15 @@
 					</router-view>
 				</section>
 			</el-main>
-			<el-footer v-if="themeConfig.footer">
-				<Footer></Footer>
-			</el-footer>
 		</el-container>
 	</el-container>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Menu from "./Menu/index.vue";
+import Menu from "./Menu/index";
 import Header from "./Header/index.vue";
 import Tabs from "./Tabs/index.vue";
-import Footer from "./Footer/index.vue";
 import cacheRouter from "@/routers/cacheRouter";
 import { onMounted } from "vue";
 import { getAuthButtons } from "@/api/modules/login";
