@@ -14,7 +14,7 @@ Object.keys(metaRouters).forEach(item => {
 const routes: RouteRecordRaw[] = [
 	{
 		path: "/",
-		redirect: "/entrance"
+		redirect: "/login"
 	},
 	...routerArray,
 	{

@@ -19,8 +19,12 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 	const maxLength = ref<number>(0);
 
 	// 表格操作 Hooks
-	const { tableData, searchParam, pageable, watchReset, getTableList, search, reset, handleCurrentChange, handleSizeChange } =
-		useTable(props.requestApi, props.initParam, props.showPagination, props.dataCallback);
+	const { tableData, searchParam, pageable, getTableList, search, reset, handleCurrentChange, handleSizeChange } = useTable(
+		props.requestApi,
+		props.initParam,
+		props.showPagination,
+		props.dataCallback
+	);
 
 	const tableColumns = ref<ColumnProps[]>();
 	tableColumns.value = props.columns.map(column => {
@@ -144,8 +148,7 @@ const proTable = defineComponent<ProTableProps>((props, ctx) => {
 	expose({
 		search,
 		searchParam,
-		selectedListIds,
-		watchReset
+		selectedListIds
 	});
 	return () => (
 		<div class="table-box">

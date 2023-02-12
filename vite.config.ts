@@ -19,7 +19,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 	const viteEnv = wrapperEnv(env);
 
 	return {
-		// base: "/",
+		base: "./",
 		// alias config
 		resolve: {
 			alias: {
@@ -110,7 +110,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
 		},
 		// build configure
 		build: {
-			outDir: "dist",
+			outDir: "docs",
 			// esbuild 打包更快，但是不能去除 console.log
 			minify: "esbuild",
 			// minify: "terser",

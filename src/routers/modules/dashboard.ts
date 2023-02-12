@@ -20,7 +20,7 @@ const dashboardRouter: Array<RouteRecordRaw> = [
 				component: () => import("@/views/dashboard/dataVisualize/index.vue"),
 				meta: {
 					keepAlive: true,
-					requiresAuth: true,
+					requiresAuth: false,
 					title: "数据可视化",
 					key: "dataVisualize"
 				}
